@@ -73,9 +73,12 @@ dataRunner.addEventListener("status-change", function (event) {
     // use means as table foot
     var means = ['Mean'];
     means = means.concat(dcmb.getMeans(results));
+    var medians = ['Median'];
+    medians = medians.concat(dcmb.getMedians(results));
+
     // add to result div
     div.appendChild(dcmb.createTable(
-      memoryRunner.getFunctionHeader(), dataHeader, results, means
+      memoryRunner.getFunctionHeader(), dataHeader, results, medians
     ));
   }
 });

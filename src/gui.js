@@ -75,6 +75,38 @@ dcmb.getMeans = function (results) {
   return means;
 };
 
+dcmb.getMedians = function (results) {
+
+  var nrows = results.length;
+  var ncols = results[0].length;
+  // check number of cols
+  for (var i = 0; i < nrows; ++i) {
+    if (results[i].length !== ncols) {
+      throw new Error("Different number of columns...");
+    }
+  }
+  // median along columns
+  var medians = [];
+  for (var j = 0; j < ncols; ++j) {
+    var values = [];
+    for (var k = 0; k < nrows; ++k) {
+      var amount = dcmb.parseData(results[k][j]).value;
+      if (amount > 0) {
+        values.push(amount);
+      } 
+    }
+    values.sort((a, b) => a - b);
+    var lowMiddle = Math.floor((values.length - 1) / 2);
+    var highMiddle = Math.ceil((values.length - 1) / 2);
+    var median = (values[lowMiddle] + values[highMiddle]) / 2;
+    medians.push(median);
+  }
+  return medians;
+
+
+  
+}
+
 /**
  * Parse result data: if string anything before sapce is the value.
  */
