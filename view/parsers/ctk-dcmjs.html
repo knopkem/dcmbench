@@ -26,6 +26,12 @@ parse = function (buffer) {
     // run dcmtk command
     dcmjs.utils.execute('dcmdump', [fileName]);
 };
+parse2 = function (buffer) {
+  parse(buffer);
+  // return the memory state
+  return performance.memory;
+};
+
 // Parse a DICOM buffer and dump its content
 dump = function (buffer) {
     // store lines

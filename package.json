@@ -16,11 +16,11 @@
   },
   "dependencies": {
     "benchmark": "~2.1.4",
-    "daikon": "~1.2.42",
-    "dcmjs": "~0.13.0",
-    "dicom-parser": "~1.8.5",
+    "daikon": "^1.2.42",
+    "dcmjs": "^0.16.2",
+    "dicom-parser": "^1.8.5",
     "diff": "~4.0.2",
-    "dwv": "~0.27.0"
+    "dwv": "^0.27.0"
   },
   "devDependencies": {
     "grunt": "~1.2.1",

@@ -34,8 +34,18 @@ dcmb.Memory = function () {
     for (var i = 0; i < functions.length; ++i) {
       // run the function
       var mem = functions[i].func(buffer);
-      // add to measure
-      measures.push(mem.usedJSHeapSize - previousMemory.usedJSHeapSize);
+      console.warn(functions[i].name, previousMemory, mem);
+
+      var usedMem = mem.usedJSHeapSize - previousMemory.usedJSHeapSize;
+
+      // ignore garbage
+      if (usedMem > 0) {
+        // add to measure
+        measures.push(usedMem);
+      } else {
+        measures.push(0);
+      }
+
       previousMemory = mem;
     }
     return measures;

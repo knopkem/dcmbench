@@ -15,6 +15,12 @@ parse = function (buffer) {
   // parse
   var dataSet = dicomParser.parseDicom(content);
 };
+parse2 = function (buffer) {
+  parse(buffer);
+  // return the memory state
+  return performance.memory;
+};
+
 </script>
 
 </html>

@@ -15,6 +15,11 @@ parse = function (buffer) {
     // parse the data
     var image = daikon.Series.parseImage(data);
 };
+parse2 = function (buffer) {
+  parse(buffer);
+  // return the memory state
+  return performance.memory;
+};
 </script>
 
 </html>

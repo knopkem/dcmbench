@@ -59,12 +59,18 @@ dcmb.getMeans = function (results) {
   }
   // sum along columns
   var means = [];
+  var failures = 0;
   for (var j = 0; j < ncols; ++j) {
     var sum = 0;
     for (var k = 0; k < nrows; ++k) {
-      sum += dcmb.parseData(results[k][j]).value;
+      var amount = dcmb.parseData(results[k][j]).value;
+      if (amount > 0) {
+        sum += amount;
+      } else {
+        failures++;
+      }
     }
-    means.push(sum/nrows);
+    means.push(sum/(nrows-failures));
   }
   return means;
 };
