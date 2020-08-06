@@ -157,17 +157,21 @@ function onChangeParsers(input) {
 
 // handle launch
 function onLaunchButton() {
-  // action according to status
-  var status = dataRunner.getStatus();
-  if ( status === "ready" ||
-    status === "done" ||
-    status === "cancelled" ) {
-    // run
-    dataRunner.run();
-  }
-  else if ( status === "running" ) {
-    // cancel
-    dataRunner.cancel();
+
+  if (confirm("Start Benchmark?")) {
+    
+    // action according to status
+    var status = dataRunner.getStatus();
+    if ( status === "ready" ||
+      status === "done" ||
+      status === "cancelled" ) {
+      // run
+      dataRunner.run();
+    }
+    else if ( status === "running" ) {
+      // cancel
+      dataRunner.cancel();
+    }
   }
 };
 
